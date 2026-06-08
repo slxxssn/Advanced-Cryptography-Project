@@ -126,3 +126,38 @@ end = time.time()
 
 print("\nAES Performance Test")
 print("Time:", end - start)
+
+
+
+
+
+from rsa_cipher import generate_keys, encrypt_message, decrypt_message
+
+print("\n===== RSA PUBLIC KEY CRYPTOGRAPHY (WEEK 5) =====")
+
+# FIG 1
+private_key, public_key = generate_keys()
+print("RSA Key Pair Generated")
+
+message = "SECURE MESSAGE"
+
+# FIG 2
+encrypted_msg = encrypt_message(public_key, message)
+print("\nEncrypted Message:", encrypted_msg)
+
+# FIG 3
+decrypted_msg = decrypt_message(private_key, encrypted_msg)
+print("Decrypted Message:", decrypted_msg)
+
+# FIG 5 (testing)
+test_messages = ["HELLO", "CRYPTO", "SECURITY"]
+
+print("\nRSA Testing Results")
+
+for msg in test_messages:
+    enc = encrypt_message(public_key, msg)
+    dec = decrypt_message(private_key, enc)
+
+    print("\nOriginal:", msg)
+    print("Encrypted:", enc)
+    print("Decrypted:", dec)
